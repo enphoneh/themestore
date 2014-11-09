@@ -4,13 +4,14 @@ import com.enphoneh.utils.ScreenUtils;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
-public class SlideMenu extends HorizontalScrollView {
+public class SlideMenu extends HorizontalScrollView  {
 
 	/** 
      * 屏幕宽度 
@@ -50,7 +51,7 @@ public class SlideMenu extends HorizontalScrollView {
   
             mMenuWidth = mScreenWidth - mMenuRightPadding;  
             mHalfMenuWidth = mMenuWidth / 2;  
-            menu.getLayoutParams().width = mMenuWidth;  
+            menu.getLayoutParams().width = mScreenWidth*2/5;  
             content.getLayoutParams().width = mScreenWidth;    
         }  
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -70,6 +71,7 @@ public class SlideMenu extends HorizontalScrollView {
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 		int action = ev.getAction();  
+		Log.i("slidemenu--touch",String.valueOf(action));
         switch (action)  
         {  
         // Up时，进行判断，如果显示区域大于菜单宽度一半则完全显示，否则隐藏  
@@ -79,8 +81,9 @@ public class SlideMenu extends HorizontalScrollView {
                 this.smoothScrollTo(mMenuWidth, 0);  
             else  
                 this.smoothScrollTo(0, 0);  
-            return true;  
+            return true;
         }  
         return super.onTouchEvent(ev);
 	}
+
 }
