@@ -19,7 +19,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                  android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/preference_themesetting" />
 
@@ -28,7 +28,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/one"
                 android:text="主题"
                 android:textColor="#ffffff"
@@ -45,7 +45,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                  android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/icon_topmenu_plugin" />
 
@@ -54,7 +54,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/two"
                 android:text="插件"
                 android:textColor="#ffffff"
@@ -71,7 +71,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                  android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/preference_languagesetting" />
 
@@ -80,7 +80,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/three"
                 android:text="字体"
                 android:textColor="#ffffff"

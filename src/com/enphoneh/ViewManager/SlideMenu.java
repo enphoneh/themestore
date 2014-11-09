@@ -49,10 +49,10 @@ public class SlideMenu extends HorizontalScrollView  {
                     TypedValue.COMPLEX_UNIT_DIP, mMenuRightPadding, content  
                             .getResources().getDisplayMetrics());  
   
-            mMenuWidth = mScreenWidth - mMenuRightPadding;  
+            mMenuWidth = mScreenWidth*2/5;  
             mHalfMenuWidth = mMenuWidth / 2;  
             menu.getLayoutParams().width = mScreenWidth*2/5;  
-            content.getLayoutParams().width = mScreenWidth;    
+            content.getLayoutParams().width = mScreenWidth;  
         }  
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
@@ -65,6 +65,9 @@ public class SlideMenu extends HorizontalScrollView  {
             this.scrollTo(mMenuWidth, 0);  
             once = true;  
         } 
+		else{
+			 this.scrollTo(mMenuWidth, 0);  
+		}
 		super.onLayout(changed, l, t, r, b);
 	}
 	
