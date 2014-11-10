@@ -26,7 +26,7 @@ public class SlideMenu extends HorizontalScrollView  {
      */  
     private int mMenuWidth;  
     private int mHalfMenuWidth;  
-  
+    private boolean isOpen;
     private boolean once;  
 	
 	public SlideMenu(Context context, AttributeSet attrs) {
@@ -80,13 +80,52 @@ public class SlideMenu extends HorizontalScrollView  {
         // Up时，进行判断，如果显示区域大于菜单宽度一半则完全显示，否则隐藏  
         case MotionEvent.ACTION_UP:  
             int scrollX = getScrollX();  
-            if (scrollX > mHalfMenuWidth)  
+            if (scrollX > mHalfMenuWidth)  {
                 this.smoothScrollTo(mMenuWidth, 0);  
-            else  
+            	isOpen = false;
+            }
+            else  {
                 this.smoothScrollTo(0, 0);  
+                isOpen = true;
+            }
             return true;
         }  
         return super.onTouchEvent(ev);
 	}
+	/**
+	 * 打开菜单
+	 */
+	public void openMenu()
+	{
+		if (isOpen)
+			return;
+		this.smoothScrollTo(0, 0);
+		isOpen = true;
+	}
 
+	/**
+	 * 关闭菜单
+	 */
+	public void closeMenu()
+	{
+		if (isOpen)
+		{
+			this.smoothScrollTo(mMenuWidth, 0);
+			isOpen = false;
+		}
+	}
+
+	/**
+	 * 切换菜单状态
+	 */
+	public void toggle()
+	{
+		if (isOpen)
+		{
+			closeMenu();
+		} else
+		{
+			openMenu();
+		}
+	}
 }
