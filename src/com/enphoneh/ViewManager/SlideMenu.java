@@ -26,8 +26,9 @@ public class SlideMenu extends HorizontalScrollView  {
      */  
     private int mMenuWidth;  
     private int mHalfMenuWidth;  
-    private boolean isOpen;
-    private boolean once;  
+    private boolean isOpen = false;
+    private boolean once=false;  
+    private boolean isOnLayout = false;
 	
 	public SlideMenu(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -53,21 +54,27 @@ public class SlideMenu extends HorizontalScrollView  {
             mHalfMenuWidth = mMenuWidth / 2;  
             menu.getLayoutParams().width = mScreenWidth*2/5;  
             content.getLayoutParams().width = mScreenWidth;  
-        }  
+        } 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
+
 	
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		if (changed)  
         {  
             // 将菜单隐藏  
-            this.scrollTo(mMenuWidth, 0);  
-            once = true;  
+			if(!isOnLayout){
+				 this.scrollTo(mMenuWidth, 0);  
+		            once = true;  
+			}  else;        
         } 
 		else{
-			 this.scrollTo(mMenuWidth, 0);  
+			if(!isOnLayout){
+				this.scrollTo(mMenuWidth, 0);  
+			}else;		 
 		}
+		isOnLayout = true;
 		super.onLayout(changed, l, t, r, b);
 	}
 	
@@ -77,7 +84,7 @@ public class SlideMenu extends HorizontalScrollView  {
 		Log.i("slidemenu--touch",String.valueOf(action));
         switch (action)  
         {  
-        // Up时，进行判断，如果显示区域大于菜单宽度一半则完全显示，否则隐藏  
+        // Up时，进行判断，如果显示区域大于菜单宽度一半则完全显示，否则隐藏       
         case MotionEvent.ACTION_UP:  
             int scrollX = getScrollX();  
             if (scrollX > mHalfMenuWidth)  {
@@ -88,10 +95,13 @@ public class SlideMenu extends HorizontalScrollView  {
                 this.smoothScrollTo(0, 0);  
                 isOpen = true;
             }
-            return true;
+            return false;
         }  
         return super.onTouchEvent(ev);
 	}
+	
+	
+	
 	/**
 	 * 打开菜单
 	 */
@@ -102,7 +112,6 @@ public class SlideMenu extends HorizontalScrollView  {
 		this.smoothScrollTo(0, 0);
 		isOpen = true;
 	}
-
 	/**
 	 * 关闭菜单
 	 */

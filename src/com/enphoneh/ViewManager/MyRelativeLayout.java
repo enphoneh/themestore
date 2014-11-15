@@ -14,12 +14,10 @@ public class MyRelativeLayout extends RelativeLayout {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	@Override
-	public boolean dispatchTouchEvent(MotionEvent ev) {
-		int action = ev.getAction();  
+	public boolean onTouchEvent(MotionEvent event) {
+		int action = event.getAction();  
 		Log.i("relative--dispatch",String.valueOf(action));
-		Log.i("relative--dispatch--3",String.valueOf(MotionEvent.ACTION_CANCEL));
 		switch(action)
 		{
 		case MotionEvent.ACTION_DOWN:
