@@ -28,7 +28,7 @@ public class SlideMenu extends HorizontalScrollView  {
     private int mHalfMenuWidth;  
     private boolean isOpen = false;
     private boolean once=false;  
-    private boolean isOnLayout = false;
+    private int mOnLayout = 0;
 	
 	public SlideMenu(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -64,17 +64,17 @@ public class SlideMenu extends HorizontalScrollView  {
 		if (changed)  
         {  
             // 将菜单隐藏  
-			if(!isOnLayout){
+			if(mOnLayout < 2){
 				 this.scrollTo(mMenuWidth, 0);  
 		            once = true;  
 			}  else;        
         } 
 		else{
-			if(!isOnLayout){
+			if(mOnLayout < 2){
 				this.scrollTo(mMenuWidth, 0);  
 			}else;		 
 		}
-		isOnLayout = true;
+		mOnLayout++;
 		super.onLayout(changed, l, t, r, b);
 	}
 	
